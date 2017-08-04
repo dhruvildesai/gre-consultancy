@@ -1,0 +1,138 @@
+<html>
+  	<head>
+		<title>GRE CONSULTANCY</title>
+		<style>
+            input[type=submit]:hover {
+                background-color: #45a049;
+            } 
+
+        </style>
+        <link rel="stylesheet2" type="text/css" href="stylesheet.css"></link>
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+        <script src="js/jquery-1.12.4.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <?php
+            $name ="";
+            $conn= mysqli_connect("localhost","root","", "gre_database_1");  
+            if (!$conn)
+            {
+                die('Could not connect: ' . mysql_error());
+            }  
+            else
+            { 
+                if(isset($_POST['login_user']))
+                {
+                    $name = $_POST['login_user'];
+                    $password = $_POST['login_pass'];
+                    $checkdata = "select username from user where username='$name' and password = $password;";
+                    //$checkpass = ""
+                    $query=mysqli_query($conn, $checkdata);
+                }
+            }
+            exit();
+?>
+        <div class="container">
+        <nav class="navbar navbar-inverse">
+        <div class = "container-fluid">
+        <div class = "row" id="wrapper">
+            <div class ="col-xs-12" style="background-color:#637E99; color:white;">
+            <div id="header">
+                <header>
+                    <center>
+                    <h1><u><font face ="Times new roman"><b>GRE CONSULTANCY</font></b></u>
+                        <img src="logo.png" align=left></img>
+                    </h1>
+                    </center>
+                </header>
+            </div>
+            </div>
+        </div>
+        <div class = "row" id = "content">
+            <div class = "col-xs-12">
+                <h3>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#grenavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="grenavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="center_align"><a class = "active" href="index.html">Home</a></li>
+                        <li class= "dropdown center_align" >
+                            <a class="dropdown-toggle" data-toggle="dropdown" href = "#info">Information
+                                <span class= "caret"></span></a>
+                                <ul class = "dropdown-menu">
+                                    <li><a href= "university.html">Top colleges</a></li>
+                                    <li><a href = "courses.html">Top courses</a></li>
+                                </ul>
+                                <!-- WebsiteChat.net begin --><img src="http://static.ssl7.net/b/en/6286194488120384d7388ccd5e4e/5.gif" style="cursor:pointer;border:none;" alt="Live Help Software" onclick="window.open('http://ssl7.net/chat/en/6286194488120384d7388ccd5e4e/'+document.location.href,'','height=400,width=300,menubar=no, location=no,resizable=yes,scrollbars=no,status=yes');" /><noscript><a href="http://websitechat.net" style="display:block;">Live Help Software</a></noscript><!-- WebsiteChat.net end -->
+                        </li>
+                        <li class="center_align"><a href="search.php">Search</a></li>
+                        <li class="center_align"><a href="contact_us.html">Contact Us</a></li>
+                        <li class="center_align"><a href="about.html">About</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href= "form.html"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
+                        <li class="active"><a href= "login.html"><span class="glyphicon glyphicon-log-in"></span>Login</a></a></li>       
+                    </ul>
+                    </div>
+                </h3>
+            </div>
+        </div>
+        </div>
+        </nav>
+        </div>
+                    <div class = "col-xs-2"></div>        
+                        <div class = "col-xs-4">
+					<form>
+                        <div class = "form-group">
+                     	<label for="username">Username</label><br>
+                     	<input type="text" name="login_user" class= "form-control" placeholder="Enter user name">
+                     	<br>
+                     	<label for="password">Password</label><br>
+                     	<input type="password" name="login_pass" class= "form-control" placeholder="Enter password">
+                     	<br>
+                     	<br>
+                     	<input type="submit" value="login" name="done" class= "form-control">
+                     </div>
+					</form>
+                    <div class = "col-xs-12" style="color:red">
+                    <?php 
+                        if(mysqli_num_rows($query)>0)
+                        {
+                            
+                            echo("login successfully");
+                        }
+                        else
+                        {
+                            echo("invalid username or password");
+                        }
+                    ?>
+                    </div>
+                 </div>
+				</div>
+			</div>
+        <div class = "container">
+        <div class = "row">
+            <div class ="col-xs-12">
+                <address>
+                    <h5>TE comp science D J Sanghvi<br>
+                    Vile parle (west) Mumbai</h5>
+                </address>
+            </div>
+        </div>
+        <div class = "row">
+            <div class ="col-xs-12">
+               <footer><h4>Powered by md web technologies</h4></footer>
+            </div>
+        </div>
+        </div>
+
+
+    </body>
+</html>

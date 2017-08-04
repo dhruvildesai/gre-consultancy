@@ -1,0 +1,129 @@
+<?php
+	session_start();
+?>
+<html>
+  	<head>
+		<title>GRE CONSULTANCY</title>
+		<style>
+ 		</style>
+		<link rel="stylesheet2" type="text/css" href="stylesheet.css"></link>
+		<link href="css/bootstrap.min.css" rel="stylesheet"></link>
+		<script src="js/jquery-1.12.4.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+    </head>
+    <body>
+		<div class="container">
+		<nav class="navbar navbar-inverse">
+		<div class = "container-fluid">
+	    <div class = "row" id="wrapper">
+			<div class ="col-xs-12" style="background-color:#637E99; color:white;">
+	    	<div id="header">
+				<header>
+					<center>
+					<h1><u><font face ="Times new roman"><b>GRE CONSULTANCY</font></b></u>
+						<img src="logo.png" align=left></img>
+					</h1>
+					</center>
+				</header>
+			</div>
+			</div>
+		</div>
+		<div class = "row" id = "content">
+	    	<div class = "col-xs-12">
+				<h3>
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#grenavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="grenavbar">
+					<ul class="nav navbar-nav">
+						<li class="center_align"><a class = "active" href="index.php">Home</a></li>
+						<li class= "dropdown center_align" >
+							<a class="dropdown-toggle" data-toggle="dropdown" href = "#info">Information
+								<span class= "caret"></span></a>
+								<ul class = "dropdown-menu">
+									<li><a href= "university.php">Top colleges</a></li>
+									<li><a href = "courses.php">Top courses</a></li>
+								</ul>
+						</li>
+						<li class="center_align"><a href="search.php">Search</a></li>
+						<li class="active center_align"><a href="contact_us.php">Contact Us</a></li>
+						<li class="center_align"><a href="about.php">About</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<!-- <li><a href= "form.html"><span class="glyphicon glyphicon-user"></span>Sign up</a></li> -->
+						<?php
+                        	if (isset($_SESSION ['sid']))
+							{
+								$username = $_SESSION['login_user'];
+                        		echo ("");
+							}
+							else
+							{	
+                        		echo ("<li><a href= \"form.html\"><span class=\"glyphicon glyphicon-user\"></span>Sign up</a></li>");
+                            }
+                         ?>
+                        <?php
+                        	if (isset($_SESSION ['sid']))
+							{
+								$username = $_SESSION['login_user'];
+                        		echo ("<li><a href= \"logout.php\"><span class=\"glyphicon glyphicon-log-out\"></span>&nbsp".$username."</a></a></li>");
+							}
+							else
+							{	
+                        		echo ("<li><a href= \"login.php\"><span class=\"glyphicon glyphicon-log-in\"></span>Login</a></a></li>");
+                            }
+                         ?>       
+					</ul>
+					</div>
+				</h3>
+			</div>
+		</div>
+		</div>
+		</nav>
+		</div>
+		<div class = "container">
+		<div class = "row">	
+        <div class = "col-xs-12">
+			<div class = "row">	
+					<table>
+						<tr>
+							<td style="padding-top:0px">
+                                <b>Address:</b><br>
+                                Plot No.U-15, J.V.P.D. Scheme,<br>
+								Bhaktivedanta Swami Marg,<br>
+								Vile Parle (West),<br>
+								Mumbai-400 056.<br>
+								India<br>
+								<b><p>You can contact us at:</b><br>
+								mobile no: +91 9865430209<br>
+								landline no: +91 22 23457895<br>
+								<b>Our Fax no is:</b> +91 22 28946543<br></p>
+				    			<b>You can mail us at:</b>
+				    			<a href="mailto:MDweb@gmail.com">MDweb@gmail.com</a><br>
+                            </td>
+                            <td></td>
+	        </div>                    
+        </div>                    
+        <div class = "col-xs-12">
+				    		<td>
+                    			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1810.6673673777748!2d72.8358718325812!3d19.113056683423334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9c676018b43%3A0x75f29a4205098f99!2sDwarkadas+J.+Sanghvi+College+Of+Engineering!5e0!3m2!1sen!2sin!4v1473355261448" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    		</td>
+                    	</tr>
+                    </table>
+		</div>
+		</div>
+		<div class = "row">
+	    	<div class ="col-xs-12">
+		       <footer><h4>Powered by md web technologies</h4></footer>
+	        </div>
+	    </div>
+
+    </body>
+</html>
+			
+

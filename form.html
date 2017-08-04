@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GRE CONSULTANCY</title>
+        <link rel="stylesheet2" type="text/css" href="stylesheet.css"></link>
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+        <script src="js/jquery-1.12.4.min.js"></script>
+        <!--Include all compiled plugins (below), or include individual files as needed --> 
+        <script src="js/bootstrap.min.js"></script>
+<style>
+input[type=submit]:hover {
+    background-color: #45a049;
+} 
+.mydiv {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 0px;
+    margin-left: 0px
+}
+p
+{
+  font-size: 30px;
+  font-weight:bold;
+}
+form
+{
+   margin-left: 40px;
+}
+label
+{
+  font-size:20px;
+  font-weight:bold;
+}
+</style>
+
+<script language="javascript">
+	function onclickcheck()
+    {
+       var valid = true;
+       var fname= document.f1.firstname.value;
+       var name = document.f1.username.value;
+       var checks = /^[a-zA-z][a-zA-z ]+[a-zA-z]*$/;
+       var pass = document.f1.pass.value;
+       var checkpass = document.f1.checkpass.value;
+       var checks1 = /^[a-zA-z]+[a-zA-z0-9!@#$%^&*)(]*$/;
+       var checkemail1 = /^[a-z][.a-z0-9!#$%^&*)(]+[@]+([a-z][.]|[a-z])*$/;
+       var ema = document.f1.emailid.value;
+       //var check = <?php checkUserExists(name); ?>
+       //console.log(check); 
+       //var checkmail2 = /^[^[.!#$%^&*][.!#$%^&*]]+[a-z0-9.!#$%^&*]@[a-z.!#$%^&*]*$/;
+       //alert("onclickcheck called");
+       $('#mymodal').find('.modal-body').text('Invalid data entered in username, password, confirm password or email id. Please check.');            
+       $('#mymodal').modal({show: false});
+       if((fname == "") || (fname == null))
+       {
+        document.getElementById ("error_name").innerHTML = "Please enter first name";
+        //alert("give first name");
+        valid = false;
+       }
+       else
+         document.getElementById ("error_name").innerHTML = "";
+       if((pass == "") || (pass == null))
+       {
+        //alert("give password");
+        document.getElementById ("error_pass").innerHTML = "Please enter password";
+        //alert("give first name");
+        valid = false;
+       }
+       else
+         document.getElementById ("error_pass").innerHTML = "";
+
+       if((checkpass == "") || (checkpass == null))
+       {
+        //alert("give checkpass");
+        document.getElementById ("error_confirm").innerHTML = "Please confirm password";
+        //alert("give first name");
+        valid = false;
+       }
+       else
+         document.getElementById ("error_confirm").innerHTML = "";
+
+       if((name == "") || (name == null))
+       {
+        //alert("give user name");
+        document.getElementById ("error_user").innerHTML = "Please enter user name";
+        //alert("give first name");
+        valid = false;
+       }
+       else
+         document.getElementById ("error_user").innerHTML = "";
+
+       if((ema == "") || (ema == null))
+       {
+        //alert("give user name");
+        document.getElementById ("error_email").innerHTML = "Please enter email id";
+        //alert("give first name");
+        valid = false;
+       }
+       else
+         document.getElementById ("error_email").innerHTML = "";
+
+       if(valid)
+       {
+           if((checks.test(fname))&&(checks1.test(pass))&&(pass == checkpass)&&(pass.length>=6)&&(checkemail1.test(ema)))
+             ;//alert("Done");
+           else
+           {
+
+             //$('#mymodal').modal('show');
+             //alert("Invalid data entry");
+             if(!checks.test(fname))
+             {
+                $('#mymodal').find('.modal-body').text('first name should have all characters and minimum length 2');
+
+             }
+             if(!checkemail1.test(ema))
+             {
+                $('#mymodal').find('.modal-body').text('invalid email format');
+
+             }
+             if((!checks1.test(pass)) || (pass.length < 6))
+             {
+                $('#mymodal').find('.modal-body').text('invalid password format or password less than 6 characters.');
+
+             }
+             if(!(pass == checkpass))
+             {
+                $('#mymodal').find('.modal-body').text('password and confirm password do not match');
+
+             }
+             $('#mymodal').modal('show');
+             valid = false;
+           }
+       }
+       if (valid)
+       {
+          if (!checkname())
+          {
+            //alert ("checkname returned false");
+            valid = false;
+           }
+       }
+       return valid;
+       /*if((checks1.test(pass))&&(pass == checkpass))
+         alert("Done");
+       else
+         alert("Invalid password");*/
+    }
+    function checkname()
+    {
+        var name = document.getElementById("username").value;
+        //alert("checking username $name");
+        if(name)
+        {
+            $.ajax({
+                type: 'post',
+                url: 'checkuser.php',
+                //dataType: "json",
+                data: {
+                    user_name: name,
+
+                },
+                success: function(response){
+                    $('#name_status').html(response);
+                    //alert(response);
+                    if(response == "OK"){
+                        document.getElementById ("error_user").innerHTML = "";
+                        return true;
+                    }
+                    else 
+                    {
+                        document.getElementById ("error_user").innerHTML = "Username already exists";
+                        return false;
+                    }
+                }
+            });
+        }
+        else{
+            $('#name_status').html("");
+            return true;
+        }
+        return true;
+
+
+    }
+</script>
+</head>
+<body>
+        <?php
+           function checkUserExists($uname)
+           {
+              echo $uname;
+              return true;
+           }
+        ?>
+        <div class="container">
+        <nav class="navbar navbar-inverse">
+        <div class = "container-fluid">
+        <div class = "row" id="wrapper">
+            <div class ="col-xs-12" style="background-color:#637E99; color:white;">
+            <div id="header">
+                <header>
+                    <center>
+                    <h1><u><font face ="Times new roman"><b>GRE CONSULTANCY</font></b></u>
+                        <img src="logo.png" align=left></img>
+                    </h1>
+                    </center>
+                </header>
+            </div>
+            </div>
+        </div>
+        <div class = "row" id = "content">
+            <div class = "col-xs-12">
+                <h3>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#grenavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="grenavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="center_align"><a class = "active" href="index.php">Home</a></li>
+                        <li class= "dropdown center_align" >
+                            <a class="dropdown-toggle" data-toggle="dropdown" href = "#info">Information
+                                <span class= "caret"></span></a>
+                                <ul class = "dropdown-menu">
+                                    <li><a href= "university.php">Top colleges</a></li>
+                                    <li><a href = "courses.php">Top courses</a></li>
+                                </ul>
+                        </li>
+                        <li class="center_align"><a href="search.php">Search</a></li>
+                        <li class="center_align"><a href="contact_us.php">Contact Us</a></li>
+                        <li class="center_align"><a href="about.php">About</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href= "form.html"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
+                        <li><a href= "login.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></a></li>       
+                    </ul>
+                    </div>
+                </h3>
+            </div>
+        </div>
+        </div>
+        </nav>
+        </div>
+   <div class = "container">
+   <center><p> Sign Up Form</p></center>
+   <div class = "col-xs-6">
+   <form name="f1" method="POST" action="submit.php">
+    <div class = "form-group">
+    <label for="fname">First Name <span style="color:red">*</span></label>
+    <input class= "form-control" type="text" name="firstname" placeholder="Enter first name"><span style="color:red" id="error_name" name="error_name">  </span>
+    <br>
+    <label for="lname">Last Name</label>
+    <br>
+    <input class= "form-control" type="text" id="lname" name="lastname" placeholder="Enter last name">
+    <br>
+    <label for="country">Nationality</label><br>
+    <input class= "form-control" type="text" id="count_name" name="country"  placeholder="Enter nationality">
+    <br>
+    <div class = "form-inline">
+    <label for="dob">DOB</label>:
+    <select name="date" class= "form-control">
+    <option>dd</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+    <option>13</option>
+    <option>14</option>
+    <option>15</option>
+    <option>16</option>
+    <option>17</option>
+    <option>18</option>
+    <option>19</option>
+    <option>20</option>
+    <option>21</option>
+    <option>22</option>
+    <option>23</option>
+    <option>24</option>
+    <option>25</option>
+    <option>26</option>
+    <option>27</option>
+    <option>28</option>
+    <option>29</option>
+    <option>30</option>
+    <option>31</option>
+    </select>
+    <select name="month" class= "form-control">
+    <option>mm</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+    </select>
+    <select name="year" class= "form-control">
+    <option>yyyy</option>
+    <option>1990</option>
+    <option>1991</option> 
+    <option>1992</option>
+    <option>1993</option>
+    <option>1994</option>
+    <option>1995</option>
+    <option>1996</option>
+    <option>1997</option>
+    <option>1998</option>
+    </select>
+    </div>
+    <br>
+    <label for="add">Address</label>:<br><textarea name="address" rows=3, cols=40 class= "form-control"  placeholder="Enter address">
+    </textarea>
+    <br>
+    <label for="user">Username <span style="color:red">*</span></label><br><Input type="textbox" name="username" class= "form-control"  placeholder="Enter user name" id="username" onkeyup = "checkname()"><span style="color:red" id ="error_user" name="error_user">  </span>
+    <br>
+    <label for="pass">Password <span style="color:red">*</span></label><br><Input type="password" name="pass" class= "form-control"  placeholder="Enter password"><span style="color:red" id="error_pass" name="error_pass">  </span>
+    <br>
+    <label for="conpass">Confirm Password <span style="color:red">*</span></label><br><Input type="password" name="checkpass" class= "form-control"  placeholder="Confirm password"><span style="color:red" id="error_confirm" name="error_confirm">  </span>
+    <br>
+    <div class = "form-inline">
+    <label for="gen">Gender</label>:&nbsp<Input type="radio" name="gender" value="M" checked class= "radio">&nbsp<label for="gen"> Male</label>
+            <Input type="radio" name="gender" value="F" class= "radio">&nbsp<label for="gen">Female</label>
+    </div>
+    <br>
+    <label for="emailid">Email: <span style="color:red">*</span></label><br><Input type="email" name="emailid" class= "form-control"  placeholder="Enter email id"><span style="color:red" id = "error_email" name="error_email">  </span><br>
+    <label for="contact">Contact No</label>:<br><Input type="text" name="contact" class= "form-control"  placeholder="Enter contact number"><br>
+    <label for="collname">Name of your college</label>:<br><Input type="text" name="collname" class= "form-control"  placeholder="Enter college name"><br>
+    <label for="yearpass">Year of passing</label>:<br>
+    <select name="year_pass" class= "form-control">
+    <option>yyyy</option>
+    <option>2012</option>
+    <option>2013</option>
+    <option>2014</option>
+    <option>2015</option>
+    <option>2016</option>
+    <option>2017</option>
+    <option>2018</option>
+    <option>2019</option>
+    <option>2020</option>
+    </select><br>
+    <label for="country">Country To Apply</label><br>
+    <select name="apply" class= "form-control">
+    <option> UK </option>
+    <option> USA </option>
+    <option> Canada </option>
+    </select><br>
+    <label for="course">Masters of </label><br>
+    <select name="course" class= "form-control">
+    <option> Mathematics  </option>
+    <option> Architecture </option>
+    <option> Computer science </option>
+    <option> Electrical engineering </option>
+    <option> Civil engineering </option>
+    <option> Mechanical engineering </option>
+    </select><br>
+    <div class = "form-inline">
+    <label for="gre">Have you given GRE</label>:&nbsp<Input type="radio" name="gre" value="Y" checked class= "radio">&nbsp<label for="gre_yes">Yes</label>
+    <Input type="radio" name="gre" value="N" class= "radio">&nbsp<label for="gre_no" >No</label><br>
+    </div>
+    <br>    
+    <input type="submit" name="done" value="Submit" onclick ="return onclickcheck();" class= "form-control">
+    </div>
+  </form>
+</div>
+</div>
+<div class="modal fade" id="mymodal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           <div class = "modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+                &times;</button>
+             <h4 class="modal-title" style="color:red">Error!!!</h4>
+            </div>
+            <div class="modal-body" id="mbody">
+               <p><h4>Invalid data entered in username, password, confirm password or email id. Please check.</p></h4>     
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal"><h5>Close</h5></button>    
+            </div>
+        </div>
+    </div>
+</div>
+        <div class = "container">
+        <div class = "row">
+            <div class ="col-xs-12">
+                <hr>
+                <address>
+                    <h5>TE comp science D J Sanghvi<br>
+                    Vile parle (west) Mumbai</h5>
+                </address>
+            </div>
+        </div>
+        <div class = "row">
+            <div class ="col-xs-12">
+               <footer><h4>Powered by md web technologies</h4></footer>
+            </div>
+        </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GRE CONSULTANCY</title>
+		<link rel="stylesheet2" type="text/css" href="stylesheet.css"></link>
+		<link href="css/bootstrap.min.css" rel="stylesheet"></link>
+		<script src="js/jquery-1.12.4.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+		<style>
+			select {
+    				width: 7%;
+    				background-color:lightgrey;
+   					padding:12px 5px;
+    				margin: 10px 0;
+    				display: inline-block;
+    				border-left: 10px solid red;
+    				border-radius: 4px;
+    				align-self: center;
+			       }
+			label  {
+  				    font-size:20px;
+  					font-weight:bold;
+					text-align:center;
+			       }
+		    .btnclass{
+		    		width: 7%;
+    				background-color:lightgrey;
+   					padding:12px 5px;
+    				margin: 10px 0;
+    				display: inline-block;
+    				border-left: 10px solid red;
+    				border-radius: 4px;
+    				align-self: center;
+		          }
+                </style>
+	</head>
+	<body>
+		<?php
+	mysqli_connect("localhost","root","","gre_database_1") or die('Could not connect: ' . mysql_error());
+	$courses = $colleges = $college = "";
+	$courses = $_POST["Courses"];
+	$colleges = $_POST["College"];
+	$city = $_POST["city"];
+	if(!empty(Courses))
+		
+
+
+?>
+		<div class="container">
+		<nav class="navbar navbar-inverse">
+		<div class = "container-fluid">
+	    <div class = "row" id="wrapper">
+			<div class ="col-xs-12" style="background-color:#637E99; color:white;">
+	    	<div id="header">
+				<header>
+					<center>
+					<h1><u><font face ="Times new roman"><b>GRE CONSULTANCY</font></b></u>
+						<img src="logo.png" align=left></img>
+					</h1>
+					</center>
+				</header>
+			</div>
+			</div>
+		</div>
+		<div class = "row" id = "content">
+	    	<div class = "col-xs-12">
+				<h3>
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#grenavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="grenavbar">
+					<ul class="nav navbar-nav">
+						<li class="active center_align"><a class = "active" href="index.html">Home</a></li>
+						<li class= "dropdown center_align" >
+							<a class="dropdown-toggle" data-toggle="dropdown" href = "#info">Information
+								<span class= "caret"></span></a>
+								<ul class = "dropdown-menu">
+									<li><a href= "university.html">Top colleges</a></li>
+									<li><a href = "courses.html">Top courses</a></li>
+								</ul>
+						</li>
+						<li class="center_align"><a href="search.html">Search</a></li>
+						<li class="center_align"><a href="contact_us.html">Contact Us</a></li>
+						<li class="center_align"><a href="about.html">About</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href= "form.html"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
+                        <li><a href= "login.html"><span class="glyphicon glyphicon-log-in"></span>Login</a></a></li>       
+					</ul>
+					</div>
+				</h3>
+			</div>
+		</div>
+		</div>
+		</nav>
+		</div>
+		<form method="POST" action = "echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+		<div class = "container">
+		<div class = "row" style="background-color: white;">	
+        <div class = "col-xs-12">
+                                <pre><label for="City">City</label>		   <label for="Course">Course</label>		                 <label for="College">College</label>
+                                </pre>
+                                <pre><select name="city">																				
+                                <option>Berkley</option>						
+                                <option>Edmonton</option>
+                                <option>Cambridge</option>
+                                <option>Oxford</option>
+  				<option>Toronto</option>
+				<option>Atlanta</option>
+				<option>Stanford</option>
+				<option>Waterloo</option>
+				<option>Kingston</option>
+				<option>Princeton</option>
+				</select>   <select style="width:16%" name="courses">																				
+                                <option>Masters in Civil Engineering</option>						
+                                <option>Masters in Computer Science</option>
+                                <option>Masters in Architecture Design</option>
+                                <option>Masters in Electrical Engineering</option>
+  				<option>Masters in Mechanical Engineering</option>
+				<option>Masters in Mathematics</option>
+				</select>   <select  style="width:20%" name="college">
+                                <option>University of California</option>						
+                                <option>Edmonton University</option>
+                                <option>University of Alberta</option>
+                                <option>Princeton University</option>
+  				<option>Harward University</option>
+				<option>University of Oxford</option>
+				<option>University of Toronto</option>
+				<option>University of Waterloo</option>
+				<option>Queens University</option>
+				<option>Massachusetts Institute Of Technology</option>
+                <option>Stanford University</option>
+                <option>Georgia Institute Of Technology</option></select>
+				</pre>
+				<input type = "button" name = "searchbtn" value="Search" class = "btnclass">
+		</div>
+		</div>
+		</form>						
+		<div class = "row">
+	    	<div class ="col-xs-12">
+				<hr>
+				<address>
+					<h5>TE comp science D J Sanghvi<br>
+					Vile parle (west) Mumbai</h5>
+			    </address>
+            </div>
+        </div>
+		<div class = "row">
+	    	<div class ="col-xs-12">
+		       <footer><h4>Powered by md web technologies</h4></footer>
+	        </div>
+	    </div>
+		</div>		
+	</body>
+</html>

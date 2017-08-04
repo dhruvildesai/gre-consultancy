@@ -1,0 +1,132 @@
+<?php
+	session_start();
+?>
+<!DOCTYPE html>
+<html>
+	<head><title>GRE CONSULTANCY</title>
+		<link rel="stylesheet2" type="text/css" href="stylesheet.css"></link>
+		<link href="css/bootstrap.min.css" rel="stylesheet"></link>
+		<script src="js/jquery-1.12.4.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+		<style>
+      	.back
+      	{
+      	 	background-image: url("queen_university.jpg"); 
+      		 background-attachment: fixed;
+      	}
+      	</style>
+	</head>
+	<!-- beginning of page-->
+	<body class="back">
+		<div class="container">
+		<nav class="navbar navbar-inverse">
+		<div class = "container-fluid">
+	    <div class = "row" id="wrapper">
+			<div class ="col-xs-12" style="background-color:#637E99; color:white;">
+	    	<div id="header">
+				<header>
+					<center>
+					<h1><u><font face ="Times new roman"><b>GRE CONSULTANCY</font></b></u>
+						<img src="logo.png" align=left></img>
+					</h1>
+					</center>
+				</header>
+			</div>
+			</div>
+		</div>
+		<div class = "row" id = "content">
+	    	<div class = "col-xs-12">
+				<h3>
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#grenavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="grenavbar">
+					<ul class="nav navbar-nav">
+						<li class="center_align"><a class = "active" href="index.php">Home</a></li>
+						<li class= "active dropdown center_align" >
+							<a class="dropdown-toggle" data-toggle="dropdown" href = "#info">Information
+								<span class= "caret"></span></a>
+								<ul class = "dropdown-menu">
+									<li><a href= "university.php">Top colleges</a></li>
+									<li><a href = "courses.php">Top courses</a></li>
+								</ul>
+						</li>
+						<li class="center_align"><a href="search.php">Search</a></li>
+						<li class="center_align"><a href="contact_us.php">Contact Us</a></li>
+						<li class="center_align"><a href="about.php">About</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<!-- <li><a href= "form.html"><span class="glyphicon glyphicon-user"></span>Sign up</a></li> -->
+						<?php
+                        	if (isset($_SESSION ['sid']))
+							{
+								$username = $_SESSION['login_user'];
+                        		echo ("");
+							}
+							else
+							{	
+                        		echo ("<li><a href= \"form.html\"><span class=\"glyphicon glyphicon-user\"></span>Sign up</a></li>");
+                            }
+                         ?>
+                        <?php
+                        	if (isset($_SESSION ['sid']))
+							{
+								$username = $_SESSION['login_user'];
+                        		echo ("<li><a href= \"logout.php\"><span class=\"glyphicon glyphicon-log-out\"></span>&nbsp".$username."</a></a></li>");
+							}
+							else
+							{	
+                        		echo ("<li><a href= \"login.php\"><span class=\"glyphicon glyphicon-log-in\"></span>Login</a></a></li>");
+                            }
+                         ?>       
+					</ul>
+					</div>
+				</h3>
+			</div>
+		</div>
+		</div>
+		</nav>
+		</div>
+		<div class = "container">
+        <div class = "col-xs-12" style="background-color:white; opacity: 0.85; filter: alpha(opacity=80); ">
+		<p>
+			<h2><font face="Times New Roman"><a href="http://www.queensu.ca/" >Queen's University</a> <a href="mit.php"><img src="right.png" align="right" hspace="20"></a><a href="waterloo.php"><img src="left.png" align="right" ></a> </h2>
+		</p>
+		<p align = justify>
+			<h4>Queen's University at Kingston (commonly shortened to Queen's University or Queen's) is a public research university located in Kingston, Ontario, Canada. Founded on 16 October 1841 via a royal charter issued by Queen Victoria, the university predates the founding of Canada by 26 years. Queen's holds more than 1,400 hectares (3,500 acres) of land throughout Ontario and owns Herstmonceux Castle in East Sussex, England. Queen's is organized into ten undergraduate, graduate and professional faculties and schools.
+			</p>
+			<p align = justify>
+			The Church of Scotland established Queen's College in 1841 with a royal charter from Queen Victoria. The first classes, intended to prepare students for the ministry, were held 7 March 1842 with 13 students and two professors. Queen's was the first university west of the maritime provinces to admit women, and to form a student government. In 1883, a women's college for medical education affiliated with Queen's University was established. In 1888, Queen's University began offering extension courses, becoming the first Canadian university to do so.
+            </p>
+			<p align = justify>
+			Queen's is a co-educational university, with more than 23,000 students, and with over 131,000 living alumni worldwide.Notable alumni include government officials, academics, business leaders and 56 Rhodes Scholars. The university was ranked 4th in Canada by Maclean's University Ranking Guide for 2015, 206th in the 2015–2016 QS World University Rankings,251–300th in the 2015–2016 Times Higher Education World University Rankings, and 201–300 in the 2015 Academic Ranking of World Universities. Queen's varsity teams, known as the Golden Gaels, compete in the Ontario University Athletics conference of the Canadian Interuniversity Sport.
+            </p>
+          	 </h4>
+		<h5><a href="http://www.queensu.ca/" ><img src = "queens_univ_logo.png"></a><a href="https://en.wikipedia.org/wiki/Queen%27s_University" ><img src="wiki.png"></h5></a>
+		</div>
+		</div>
+		<div class = "container">
+		<div class = "row">
+	    	<div class ="col-xs-12" style="color: white;">
+		<address>
+				<h5>TE comp science D J Sanghvi<br>
+				Vile parle (west) Mumbai</h5>
+				</address>
+		    </div>
+        </div>
+		<div class = "row">
+	    	<div class ="col-xs-12" style="color: white;">
+		       <footer><h4>Powered by md web technologies</h4></footer>
+	        </div>
+	    </div>
+		</div>
+	</body>
+</html>
+
+      
+   
